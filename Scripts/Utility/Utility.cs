@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using Godot;
 using Vector2 = System.Numerics.Vector2;
@@ -7,18 +8,32 @@ public static class Utility
 {
     private static Random rng = new Random();
 
-    public static void Shuffle<T>(this IList<T> list)
+    public static void Shuffle<T>(this IList<T> list, Random r = null)
     {
+        if (r == null)
+        {
+            r = rng;
+        }
         int n = list.Count;
         while (n > 1)
         {
             n--;
-            int k = rng.Next(n + 1);
+            int k = r.Next(n + 1);
             T value = list[k];
             list[k] = list[n];
             list[n] = value;
         }
     }
+    public static T PickRandom<T>(this IList<T> array, Random r = null)
+    {
+        if (r == null)
+        {
+            r = rng;
+        }
+        int length = array.Count();
+        return array[r.Next(0, length - 1)];
+    }
+
     public static string[] GetAsArray(this Godot.FileAccess f)
     {
         List<string> result = new List<string>();
@@ -112,5 +127,20 @@ public static class Utility
         float ny = Mathf.Sin(x * (Mathf.Pi * 2) / worldSize.X) / (Mathf.Pi * 2) * worldSize.X;
         float nz = Mathf.Cos(x * (Mathf.Pi * 2) / worldSize.X) / (Mathf.Pi * 2) * worldSize.X;
         return noise.GetNoise(nx, ny, nz);
+    }
+    public static Color MultiColourLerp(Color[] colours, float t) {
+
+        t = Mathf.Clamp(t, 0, 1);
+
+        float delta = 1f / (colours.Length - 1);
+        int startIndex = (int)(t / delta);
+
+        if(startIndex == colours.Length - 1) {
+            return colours[colours.Length - 1];
+        }
+
+        float localT = (t % delta) / delta;
+
+        return (colours[startIndex] * (1f - localT)) + (colours[startIndex + 1] * localT);
     }
 }
