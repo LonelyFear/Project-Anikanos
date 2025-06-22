@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvrl4iiytd6ri"]
+
+[ext_resource type="Script" uid="uid://bfsesue42tdep" path="res://Systems/Camera/Scripts/CameraController.cs" id="1_aoiy7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_6ml3l"]
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("_cameraNode")]
+script = ExtResource("1_aoiy7")
+_cameraNode = NodePath("Camera")
+_cameraMoveSpeed = 5.035
+_cameraZoomSpeed = 10.005
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0525941, 0, 0, 0, 0.0525941, 0, 0, 0, 0.0525941, 0, 0, 0)
+mesh = SubResource("SphereMesh_6ml3l")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.78269, 0.748341)
+near = 0.02
