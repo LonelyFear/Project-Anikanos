@@ -4,7 +4,7 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_6ml3l"]
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("_cameraNode")]
+[node name="Camera Controller" type="Node3D" node_paths=PackedStringArray("_cameraNode")]
 script = ExtResource("1_aoiy7")
 _cameraNode = NodePath("Camera")
 _cameraMoveSpeed = 5.035
