@@ -1,0 +1,8 @@
+{
+	"name":"Grain",
+	"id":"grain",
+	"baseWorth": 1.0,
+	"nutrition":1.0,
+	"weight":1,
+	"rotRate":0.9
+}

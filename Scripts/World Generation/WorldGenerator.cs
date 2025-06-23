@@ -21,10 +21,15 @@ public class WorldGenerator
     public float[,] HeightMap;
     public float[,] RainfallMap;
     public float[,] TempMap;
+    public Biome[,] BiomeMap;
     public string[,] Features; // for denoting special stuff such as oasises, waterfalls, ore veins, etc
     public Dictionary<Vector2I, Vector2I> FlowDirMap;
     public float[,] HydroMap;
     public Random rng;
+    public bool TempDone;
+    public bool RainfallDone;
+    public bool HeightmapDone;
+    public bool WaterDone;
 
     public void Init()
     {
@@ -36,6 +41,10 @@ public class WorldGenerator
     public void GenerateWorld()
     {
         HeightMap = new HeightmapGenerator().GenerateHeightmap(this);
+        TempMap = new TempmapGenerator().GenerateTempMap(this, 2f);
+        RainfallMap = new RainfallMapGenerator().GenerateRainfallMap(this, 2f);
+        BiomeMap = new BiomeGenerator().GenerateBiomes(this);
+        // TODO: Add water flow simulations
     }
     public static float GetUnitTemp(float value)
     {

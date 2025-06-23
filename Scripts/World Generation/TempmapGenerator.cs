@@ -3,10 +3,11 @@ using System;
 
 public class TempmapGenerator
 {
+    float[,] map;
     WorldGenerator w;
-    float[,] GenerateTempMap(WorldGenerator w, float scale){
+    public float[,] GenerateTempMap(WorldGenerator w, float scale){
         this.w = w;
-        float[,] map = new float[w.WorldSize.X, w.WorldSize.Y];
+        map = new float[w.WorldSize.X, w.WorldSize.Y];
         FastNoiseLite noise = new FastNoiseLite(w.rng.Next(-99999, 99999));
         noise.SetFractalType(FastNoiseLite.FractalType.FBm);
         noise.SetFractalOctaves(8);

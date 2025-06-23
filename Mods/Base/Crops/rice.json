@@ -1,0 +1,9 @@
+{
+	"name":"Rice",
+	"id":"rice",
+	"maxFertility" : 1.5,
+	"minFertility" : 0.8,
+	"yield" : {
+		"grain" : 1
+	}
+}

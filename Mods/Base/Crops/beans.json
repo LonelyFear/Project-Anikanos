@@ -1,0 +1,9 @@
+{
+	"name":"Beans",
+	"id":"beans",
+	"maxFertility" : 0.5,
+	"minFertility" : 0.2,
+	"yield" : {
+		"grain" : 1.0
+	}
+}
