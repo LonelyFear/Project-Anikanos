@@ -24,11 +24,11 @@ public class HeightmapGenerator
     static Random rng = new Random();
 
     // Todo: Make World Generation Manager
-    public float[,] GenerateHeightmap(WorldGenerator w)
+    public float[,] GenerateHeightmap()
     {
-        rng = new Random(w.Seed);
-        worldSize = w.WorldSize;
-        worldMult = w.WorldMult;
+        rng = new Random(WorldGenerator.Seed);
+        worldSize = WorldGenerator.WorldSize;
+        worldMult = WorldGenerator.WorldMult;
         heightmap = new float[worldSize.X, worldSize.Y];
         midpoints = new bool[worldSize.X, worldSize.Y];
         tiles = new TerrainTile[worldSize.X, worldSize.Y];

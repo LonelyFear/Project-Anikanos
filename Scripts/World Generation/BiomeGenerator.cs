@@ -3,16 +3,16 @@ using System.Collections.Generic;
 public class BiomeGenerator
 {
     public Biome[,] map;
-    public Biome[,] GenerateBiomes(WorldGenerator w)
+    public Biome[,] GenerateBiomes()
     {
-        for (int x = 0; x < w.WorldSize.X; x++)
+        for (int x = 0; x < WorldGenerator.WorldSize.X; x++)
         {
-            for (int y = 0; y < w.WorldSize.Y; y++)
+            for (int y = 0; y < WorldGenerator.WorldSize.Y; y++)
             {
                 Biome selectedBiome = AssetManager.GetBiome("ice_sheet");
-                float temp = WorldGenerator.GetUnitTemp(w.TempMap[x, y]);
-                float elevation = w.HeightMap[x, y];
-                float moist = WorldGenerator.GetUnitRainfall(w.RainfallMap[x, y]);
+                float temp = WorldGenerator.GetUnitTemp(WorldGenerator.TempMap[x, y]);
+                float elevation = WorldGenerator.HeightMap[x, y];
+                float moist = WorldGenerator.GetUnitRainfall(WorldGenerator.RainfallMap[x, y]);
                 Dictionary<Biome, float> candidates = new Dictionary<Biome, float>();
 
                 foreach (Biome biome in AssetManager.biomes.Values)
@@ -20,11 +20,11 @@ public class BiomeGenerator
                     bool tempInRange = temp >= biome.minTemperature && temp <= biome.maxTemperature;
                     bool moistInRange = moist >= biome.minMoisture && moist <= biome.maxMoisture;
 
-                    if (tempInRange && moistInRange && elevation >= w.SeaLevel)
+                    if (tempInRange && moistInRange && elevation >= WorldGenerator.SeaLevel)
                     {
                         candidates.Add(biome, 0);
                     }
-                    if (elevation < w.SeaLevel)
+                    if (elevation < WorldGenerator.SeaLevel)
                     {
                         selectedBiome = AssetManager.GetBiome("ocean");
                     }

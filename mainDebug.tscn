@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dfhor4st7igb2"]
 
-[ext_resource type="PackedScene" uid="uid://cvrl4iiytd6ri" path="res://Systems/Camera/CameraController.tscn" id="1_2gr8x"]
+[ext_resource type="PackedScene" uid="uid://cvrl4iiytd6ri" path="res://Scenes/Subsystems Tests/CameraController.tscn" id="1_2gr8x"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_rbg68"]
 

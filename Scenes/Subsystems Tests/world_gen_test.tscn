@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpllpwmrtgbl"]
+
+[ext_resource type="Script" uid="uid://bhajychefg31s" path="res://Scripts/System Tests/Worldgen Test/WorldGenButton.cs" id="1_gjdyq"]
+[ext_resource type="Script" uid="uid://di34l7jq2c70a" path="res://Scripts/System Tests/Worldgen Test/SliderLabel.cs" id="1_uourc"]
+
+[node name="World Gen Test" type="Node2D"]
+
+[node name="Ui" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -174.5
+offset_top = -160.0
+offset_right = 174.5
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="World Gen Button" type="Button" parent="Ui/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Generate New World"
+script = ExtResource("1_gjdyq")
+
+[node name="Slider Label" type="Label" parent="Ui/VBoxContainer" node_paths=PackedStringArray("slider")]
+layout_mode = 2
+text = "World Size: 0.5"
+script = ExtResource("1_uourc")
+slider = NodePath("../HSlider")
+
+[node name="HSlider" type="HSlider" parent="Ui/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+min_value = 0.5
+max_value = 3.0
+step = 0.5
+value = 0.5
+scrollable = false
+tick_count = 6
